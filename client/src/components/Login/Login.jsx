@@ -17,6 +17,7 @@ function Login() {
           icon: "success",
           title: "Sesión iniciada",
           text: "Bienvenido a Carnicount",
+          timer: 2000
         });
         navigate("/dashboard");
       }else if(response.message === LOGIN_FAILURE){
@@ -24,6 +25,7 @@ function Login() {
           icon: "error",
           title: "Información no válida",
           text: "Verifica la información ingresada",
+          timer: 3000
         });
       }
     } catch (error) {
