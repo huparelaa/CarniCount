@@ -7,8 +7,10 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { doLogIn } from "../../api/api";
 import { LOGIN_SUCCESSFUL, LOGIN_FAILURE } from "./loginResponses";
+import {useLocalStorage} from '../../hooks/useLocalStorage'
 function Login() {
   const navigate = useNavigate();
+  const [user_id, setUser_id] = useLocalStorage('user_id',null )
   const handleSubmit = async (values) => {
     try {
       const response = await doLogIn(values);
@@ -19,6 +21,7 @@ function Login() {
           text: "Bienvenido a Carnicount",
           timer: 2000
         });
+        setUser_id(response.user_id)
         navigate("/dashboard");
       }else if(response.message === LOGIN_FAILURE){
         Swal.fire({
