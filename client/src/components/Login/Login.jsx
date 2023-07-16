@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { doLogIn } from "../../api/api";
+import { doLogIn } from "../../api/apiUser";
 import { LOGIN_SUCCESSFUL, LOGIN_FAILURE } from "./loginResponses";
 import {useLocalStorage} from '../../hooks/useLocalStorage'
 function Login() {

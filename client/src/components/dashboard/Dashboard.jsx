@@ -1,11 +1,14 @@
-import React from 'react'
+import HeaderDashboard from "./HeaderDashboard";
+import ConsupmtionRegistry from "./ConsupmtionRegistry";
 
 function Dashboard() {
+  
   return (
-    <div>
-      i'm the dashboard
-    </div>
-  )
+    <>
+    <HeaderDashboard/>
+    <ConsupmtionRegistry/>
+    </>
+  );
 }
 
-export default Dashboard
+export default Dashboard;

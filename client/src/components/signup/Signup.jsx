@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { doSignUp } from "../../api/api";
+import { doSignUp } from "../../api/apiUser";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 

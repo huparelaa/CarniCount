@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { createTaskRequest } from "../../api/api";
+import { createTaskRequest } from "../../api/apiUser";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import FastLoginButton from "./FastLoginButton";
 function Home() {
   const [response, setResponse] = useState([]);
 
@@ -20,15 +21,16 @@ function Home() {
 
   return (
     <>
+      <FastLoginButton/>
       <ul>
         {response.map((element) => (
           <li key={element.user_id}>{element.fullName}</li>
         ))}
       </ul>
-      <Link to={"/login"}>
+      <Link to="/login">
         <Button variant="outlined">Log in</Button>
       </Link>
-      <Link to={"/signup"}>
+      <Link to="/signup">
         <Button variant="outlined">Sign up</Button>
       </Link>
     </>
