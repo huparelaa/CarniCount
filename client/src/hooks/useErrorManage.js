@@ -16,14 +16,10 @@ export function useErrorManage(data) {
   if (data.password === "") {
     errors.password = INPUT_EMPTY;
   } else if (data.password.length < 8 || data.password.length > 20) {
-    errors.password = "La contraseña debe tener entre 8 y 20 caracteres";
+    errors.password = "Ingrese una contraseña entre 8 y 20 caracteres";
   }
 
-  if (data.passwordConfirmation === "") {
-    errors.passwordConfirmation = INPUT_EMPTY;
-  } else if (data.password !== data.passwordConfirmation) {
-    errors.passwordConfirmation = "La confirmación de contraseña no coincide";
-  }
+  
 
   if (Object.keys(errors).length > 0) {
     throw errors;

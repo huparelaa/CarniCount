@@ -3,15 +3,14 @@ import { Form, Formik } from "formik";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { doSignUp } from "../../api/apiUser";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import "./signup.css";
 import { useErrorManage } from "../../hooks/useErrorManage";
-function Signup() {
+import { errorColor, whiteInput } from "../../assets/styles";
+function Signup({ seeLogIn }) {
   const [isLoading, setIsLoading] = useState(null);
   const [errorList, setErrorList] = useState({});
-  const navigate = useNavigate();
   const handleSubmit = async (values) => {
     setIsLoading(true);
     try {
@@ -22,7 +21,7 @@ function Signup() {
         title: "Registrado",
         text: "Tu registro ha sido exitoso",
       });
-      navigate("/login");
+      seeLogIn();
     } catch (error) {
       setIsLoading(false);
       setErrorList(error);
@@ -38,7 +37,6 @@ function Signup() {
           fullName: "",
           email: "",
           password: "",
-          passwordConfirmation: "",
         }}
         onSubmit={(values) => handleSubmit(values)}
       >
@@ -46,7 +44,7 @@ function Signup() {
           <Form onSubmit={handleSubmit} className="flex-container">
             <div className="signup-card">
               <TextField
-                sx={{ marginTop: 5 }}
+                sx={{ marginTop: 5, ...whiteInput, ...errorColor }}
                 error={errorList.fullName != null}
                 helperText={errorList.fullName}
                 variant="outlined"
@@ -63,6 +61,10 @@ function Signup() {
                 name="email"
                 onChange={handleChange}
                 margin="normal"
+                sx={{
+                  ...whiteInput,
+                  ...errorColor,
+                }}
               />
               <TextField
                 error={errorList.password != null}
@@ -73,20 +75,8 @@ function Signup() {
                 name="password"
                 onChange={handleChange}
                 margin="normal"
+                sx={{ ...whiteInput, ...errorColor, maxWidth: "240px"}}
               />
-              <TextField
-                error={errorList.passwordConfirmation != null}
-                helperText={errorList.passwordConfirmation}
-                type="password"
-                variant="outlined"
-                label="Confirma tu contraseña"
-                name="passwordConfirmation"
-                onChange={handleChange}
-                margin="normal"
-              />
-              <a href="/login" style={{ margin: 10, textAlign: "center" }}>
-                ¿Ya tienes una cuenta? <br /> Inicia sesión
-              </a>
               <Button
                 type="submit"
                 variant="contained"

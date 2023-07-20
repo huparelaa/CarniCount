@@ -1,5 +1,6 @@
 import HeaderDashboard from "./HeaderDashboard";
 import ConsupmtionRegistry from "./ConsupmtionRegistry";
+import ConsumptionHistory from "./ConsumptionHistory";
 
 function Dashboard() {
   
@@ -7,6 +8,7 @@ function Dashboard() {
     <>
     <HeaderDashboard/>
     <ConsupmtionRegistry/>
+    <ConsumptionHistory/>
     </>
   );
 }

@@ -8,7 +8,14 @@ function FastLoginButton() {
     <div>
       {userInformation && (
         <Link to={"/dashboard"}>
-          <h1 style={{ float: "right" }}>{userInformation.fullName}</h1>
+          <h1
+            style={{
+              background: "yellow",
+              float: "right",
+            }}
+          >
+            {userInformation.fullName}
+          </h1>
         </Link>
       )}
     </div>

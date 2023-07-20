@@ -16,3 +16,7 @@ export function validateDate(dateString) {
   const isValidDate = inputDate && !isNaN(inputDate.getTime());
   return isWithinRange && isValidDate;
 }
+
+export function dateConverter(date) {
+  return date.split("T")[0];
+}

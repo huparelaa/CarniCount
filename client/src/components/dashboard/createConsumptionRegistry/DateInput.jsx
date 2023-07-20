@@ -23,7 +23,7 @@ function DateInput({setDate,date}) {
         min={minDate}
         max={maxDate}
         onChange={handleDateChange}
-        onKeyDown={(e) => e.preventDefault()} // Prevent manual typing
+        onKeyDown={(e) => e.preventDefault()}
       />
     </div>
   );

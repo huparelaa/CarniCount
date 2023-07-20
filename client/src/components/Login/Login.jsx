@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { doLogIn } from "../../api/apiUser";
 import { LOGIN_SUCCESSFUL, LOGIN_FAILURE } from "./loginResponses";
-import {useLocalStorage} from '../../hooks/useLocalStorage'
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { whiteInput } from "../../assets/styles";
 function Login() {
   const navigate = useNavigate();
-  const [user_id, setUser_id] = useLocalStorage('user_id',null )
+  const [user_id, setUser_id] = useLocalStorage("user_id", null);
   const handleSubmit = async (values) => {
     try {
       const response = await doLogIn(values);
@@ -19,16 +20,16 @@ function Login() {
           icon: "success",
           title: "Sesión iniciada",
           text: "Bienvenido a Carnicount",
-          timer: 2000
+          timer: 2000,
         });
-        setUser_id(response.user_id)
+        setUser_id(response.user_id);
         navigate("/dashboard");
-      }else if(response.message === LOGIN_FAILURE){
+      } else if (response.message === LOGIN_FAILURE) {
         Swal.fire({
           icon: "error",
           title: "Información no válida",
           text: "Verifica la información ingresada",
-          timer: 3000
+          timer: 3000,
         });
       }
     } catch (error) {
@@ -47,22 +48,24 @@ function Login() {
               <TextField
                 name="email"
                 label="Correo electrónico"
-                sx={{ margin: "10px 0" }}
+                sx={{
+                  marginTop: 5,
+                  ...whiteInput
+                }}
                 onChange={handleChange}
               />
               <TextField
-              type="password"
+                type="password"
                 name="password"
                 label="Contraseña"
-                sx={{ margin: "10px 0" }}
+                sx={{ marginTop: 3, ...whiteInput }}
                 onChange={handleChange}
               />
-              <a href="/signup" style={{textAlign:"center"}}>¿No tienes una cuenta? <br />Regístrate</a>
               <Button
                 margin="normal"
                 type="submit"
                 variant="contained"
-                sx={{ marginTop:  2}}
+                sx={{ marginBottom: "15px", marginTop: "15px" }}
               >
                 Iniciar sesión
               </Button>

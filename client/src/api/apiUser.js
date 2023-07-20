@@ -1,5 +1,5 @@
 import axios from "axios";
-import {URL} from './url' //this will be a enviroment variable
+import {URL} from './apiConfig' //this will be a enviroment variable
 
 export const createTaskRequest = async () => await axios.get(`${URL}/test`);
 

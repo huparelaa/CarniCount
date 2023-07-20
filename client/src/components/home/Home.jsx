@@ -1,38 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { createTaskRequest } from "../../api/apiUser";
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import FastLoginButton from "./FastLoginButton";
+import React, { useState } from "react";
+import HomeHeader from "./HomeHeader";
+import Login from "../Login/Login";
+import SignUp from "../signup/Signup";
+import "./index.css";
 function Home() {
-  const [response, setResponse] = useState([]);
+  const [showLogIn, setShowLogIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(true);
+  const seeSignUp = () => {
+    setShowLogIn(false);
+    setShowSignUp(true);
+  };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  async function fetchData() {
-    try {
-      const { data } = await createTaskRequest();
-      setResponse(data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
+  const seeLogIn = () => {
+    setShowSignUp(false);
+    setShowLogIn(true);
+  };
   return (
     <>
-      <FastLoginButton/>
-      <ul>
-        {response.map((element) => (
-          <li key={element.user_id}>{element.fullName}</li>
-        ))}
-      </ul>
-      <Link to="/login">
-        <Button variant="outlined">Log in</Button>
-      </Link>
-      <Link to="/signup">
-        <Button variant="outlined">Sign up</Button>
-      </Link>
+      <HomeHeader />
+      <div className="general-card">
+        <div className="buttons-container">
+          <button
+            className={showLogIn ? "focused-button" : "unfocused-button"}
+            id="login-button"
+            onClick={seeLogIn}
+          >
+            Inicia sesión
+          </button>
+          <button
+            className={showSignUp ? "focused-button" : "unfocused-button"}
+            id="signup-button"
+            onClick={seeSignUp}
+          >
+            Regístrate
+          </button>
+        </div>
+        {showLogIn && <Login />}
+        {showSignUp && <SignUp seeLogIn={seeLogIn} />}
+      </div>
     </>
   );
 }
