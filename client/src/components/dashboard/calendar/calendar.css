@@ -1,0 +1,14 @@
+.calendar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 500px;
+    border: 2px solid #743232;
+}
+h1{
+    text-align: center;
+    color: #222;
+}

@@ -3,8 +3,6 @@ import {Routes,Route} from 'react-router-dom'
 import Dashboard from './components/dashboard/Dashboard'
 import Home from './components/home/Home'
 import NotFound from './components/notFound/NotFound'
-import Signup from './components/signup/Signup'
-import Login from './components/Login/Login'
 function App() {
 
   return (

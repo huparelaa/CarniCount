@@ -1,0 +1,42 @@
+.weekdays{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #743232;
+    color: white;
+}
+
+.days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+.today{
+    background-color: #bd3d3d;
+    color: #fff;
+}
+.day-button{
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    font-size: inherit;
+    cursor: pointer;
+}
+.enabled{
+    font-weight: bold;
+    cursor: pointer;
+}
+.disabled{
+    color: #0000005e;
+    cursor: default;
+}

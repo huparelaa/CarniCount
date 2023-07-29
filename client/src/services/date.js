@@ -1,8 +1,20 @@
 export function getMinimumAndMaximumDates() {
   // Calculate the minimum and maximum date values
   const today = new Date();
-  const maxDate = today.toISOString().split("T")[0];
-  const minDate = new Date(today.getTime() - 6 * 24 * 60 * 60 * 1000) //You can register till 7 previous days
+  //today is the maxDate
+  const maxDate = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  )
+    .toISOString()
+    .split("T")[0];
+  //minDate is 1 week before today
+  const minDate = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate() - 6
+  )
     .toISOString()
     .split("T")[0];
   return { minDate, maxDate };

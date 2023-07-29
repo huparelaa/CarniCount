@@ -1,14 +1,11 @@
-import HeaderDashboard from "./HeaderDashboard";
-import ConsupmtionRegistry from "./ConsupmtionRegistry";
 import ConsumptionHistory from "./ConsumptionHistory";
+import Calendar from "./calendar/Calendar";
 
 function Dashboard() {
-  
   return (
     <>
-    <HeaderDashboard/>
-    <ConsupmtionRegistry/>
-    <ConsumptionHistory/>
+      <ConsumptionHistory />
+      <Calendar />
     </>
   );
 }

@@ -1,0 +1,27 @@
+.grams-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.x-icon-modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: color 0.1s ease-in-out;
+}
+.x-icon-modal:hover{
+    color: rgb(235, 7, 7);
+    
+}
+.check-icon-modal{
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+.check-icon-modal:hover{
+    color: rgb(4, 156, 73);
+    transform: scale(1.1);
+}
