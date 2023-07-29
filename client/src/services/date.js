@@ -30,5 +30,6 @@ export function validateDate(dateString) {
 }
 
 export function dateConverter(date) {
-  return date.split("T")[0];
+  //convert a object date to a string date
+  return date.toISOString().split("T")[0];
 }

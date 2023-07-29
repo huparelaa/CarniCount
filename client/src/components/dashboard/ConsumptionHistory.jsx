@@ -31,7 +31,7 @@ function ConsumptionHistory() {
           {history.map((registry) => (
             <li key={registry.consumption_id}>
               <div>
-                <p>{dateConverter(registry.date)}</p>
+                <p>{registry.date.split("T")[0]}</p>
                 <p>{registry.weight} kg</p>
               </div>
             </li>

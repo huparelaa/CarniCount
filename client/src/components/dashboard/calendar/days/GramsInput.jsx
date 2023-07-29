@@ -3,10 +3,21 @@ import "./modal.css";
 import CustomInput from "./CustomInput";
 import { faCircleCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-function GramsInput({ setShowModal }) {
+import { dateConverter } from "../../../../services/date";
+import { addComsumptionRegistry } from "../../../../api/apiConsumption";
+import SweetAlert from "sweetalert2";
+function GramsInput({ setShowModal, selectedDate }) {
   const [grames, setGrames] = useState(10);
-
+  const addRegistry = () => {
+    addComsumptionRegistry(grames, dateConverter(selectedDate));
+    setShowModal(false);
+    SweetAlert.fire({
+      icon: "success",
+      title: "¡Registro añadido!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
   return (
     <div className="grams-modal">
       <FontAwesomeIcon
@@ -22,6 +33,7 @@ function GramsInput({ setShowModal }) {
         color="#33d17a"
         size="3x"
         className="check-icon-modal"
+        onClick={addRegistry}
       />
     </div>
   );

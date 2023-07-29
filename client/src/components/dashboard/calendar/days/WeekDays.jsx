@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import GramsInput from "./GramsInput";
 
 function WeekDays({ today, year, month }) {
+  const [selectedDate, setSelectedDate] = useState(null);
   const customStyles = {
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -13,7 +14,7 @@ function WeekDays({ today, year, month }) {
       backgroundColor: "rgba(0,0,0,0.5)",
       border: "none",
       maxWidth: "250px",
-      height: "225px",
+      height: "214px",
       margin: "auto",
       overflow: "hidden",
       
@@ -69,6 +70,7 @@ function WeekDays({ today, year, month }) {
                 }`}
                 onClick={() => {
                   if (!isBeforeMinDate && !isAfterMaxDate) {
+                    setSelectedDate(new Date(year, month, day));
                     setShowModal(true);
                   }
                 }}
@@ -79,7 +81,7 @@ function WeekDays({ today, year, month }) {
           })}
       </ul>
       <Modal isOpen={showModal} ariaHideApp={false} style={customStyles}>
-        <GramsInput setShowModal={setShowModal} />
+        <GramsInput setShowModal={setShowModal} selectedDate={selectedDate}/>
       </Modal>
     </>
   );
