@@ -16,6 +16,9 @@ export const whiteInput = {
     "&.Mui-focused fieldset": {
       borderColor: "white", // Set the focused border color here
     },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "white",
+    },
   },
 };
 
