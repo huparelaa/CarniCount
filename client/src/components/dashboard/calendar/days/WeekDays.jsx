@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./weekDays.css";
-import { getMinimumAndMaximumDates } from "../../../../services/date";
+import { listOfAvailableDates } from "../../../../services/date";
 import Modal from "react-modal";
 import GramsInput from "./GramsInput";
 
@@ -17,7 +17,6 @@ function WeekDays({ today, year, month }) {
       height: "214px",
       margin: "auto",
       overflow: "hidden",
-      
     },
   };
   const [showModal, setShowModal] = useState(false);
@@ -26,16 +25,45 @@ function WeekDays({ today, year, month }) {
 
   const firstDayOfMonth = new Date(year, month, 1);
   const lastDayOfMonth = new Date(year, month + 1, 0);
-  const { minDate, maxDate } = getMinimumAndMaximumDates();
 
-  const dateInfo = {
-    minDateDay: minDate.slice(8, 10),
-    minDateMonth: minDate.slice(5, 7),
-    minDateYear: minDate.slice(0, 4),
-    maxDateDay: maxDate.slice(8, 10),
-    maxDateMonth: maxDate.slice(5, 7),
-    maxDateYear: maxDate.slice(0, 4),
-  };
+  var availableDatesOnCalendar = [
+    {
+      year: listOfAvailableDates()[0].slice(0, 4),
+      month: listOfAvailableDates()[0].slice(5, 7),
+      day: listOfAvailableDates()[0].slice(8, 10),
+    },
+    {
+      year: listOfAvailableDates()[1].slice(0, 4),
+      month: listOfAvailableDates()[1].slice(5, 7),
+      day: listOfAvailableDates()[1].slice(8, 10),
+    },
+    {
+      year: listOfAvailableDates()[2].slice(0, 4),
+      month: listOfAvailableDates()[2].slice(5, 7),
+      day: listOfAvailableDates()[2].slice(8, 10),
+    },
+    {
+      year: listOfAvailableDates()[3].slice(0, 4),
+      month: listOfAvailableDates()[3].slice(5, 7),
+      day: listOfAvailableDates()[3].slice(8, 10),
+    },
+    {
+      year: listOfAvailableDates()[4].slice(0, 4),
+      month: listOfAvailableDates()[4].slice(5, 7),
+      day: listOfAvailableDates()[4].slice(8, 10),
+    },
+    {
+      year: listOfAvailableDates()[5].slice(0, 4),
+      month: listOfAvailableDates()[5].slice(5, 7),
+      day: listOfAvailableDates()[5].slice(8, 10),
+    },
+    {
+      year: listOfAvailableDates()[6].slice(0, 4),
+      month: listOfAvailableDates()[6].slice(5, 7),
+      day: listOfAvailableDates()[6].slice(8, 10),
+    },
+  ];
+
   return (
     <>
       <ul className="days">
@@ -54,22 +82,17 @@ function WeekDays({ today, year, month }) {
               numericToday === day &&
               year === today.getFullYear() &&
               month === today.getMonth();
-            const isBeforeMinDate = //calculate if the date is before the min date
-              dateInfo.minDateYear > year ||
-              dateInfo.minDateMonth > month + 1 ||
-              dateInfo.minDateDay > day;
-            const isAfterMaxDate = //calculate if the date is after the max date
-              dateInfo.maxDateYear < year ||
-              dateInfo.maxDateMonth < month + 1 ||
-              dateInfo.maxDateDay < day;
+            const isAvailable = availableDatesOnCalendar.some(
+              (date) => date.day == day && date.month == month + 1
+            );
             return (
               <li
                 key={day}
                 className={`day ${isToday ? "today" : ""} ${
-                  isBeforeMinDate || isAfterMaxDate ? "disabled" : "enabled"
+                  isAvailable ? "enabled" : "disabled"
                 }`}
                 onClick={() => {
-                  if (!isBeforeMinDate && !isAfterMaxDate) {
+                  if (isAvailable) {
                     setSelectedDate(new Date(year, month, day));
                     setShowModal(true);
                   }
@@ -81,7 +104,7 @@ function WeekDays({ today, year, month }) {
           })}
       </ul>
       <Modal isOpen={showModal} ariaHideApp={false} style={customStyles}>
-        <GramsInput setShowModal={setShowModal} selectedDate={selectedDate}/>
+        <GramsInput setShowModal={setShowModal} selectedDate={selectedDate} />
       </Modal>
     </>
   );
