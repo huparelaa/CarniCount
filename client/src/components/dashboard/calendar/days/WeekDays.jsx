@@ -25,44 +25,7 @@ function WeekDays({ today, year, month }) {
 
   const firstDayOfMonth = new Date(year, month, 1);
   const lastDayOfMonth = new Date(year, month + 1, 0);
-
-  var availableDatesOnCalendar = [
-    {
-      year: listOfAvailableDates()[0].slice(0, 4),
-      month: listOfAvailableDates()[0].slice(5, 7),
-      day: listOfAvailableDates()[0].slice(8, 10),
-    },
-    {
-      year: listOfAvailableDates()[1].slice(0, 4),
-      month: listOfAvailableDates()[1].slice(5, 7),
-      day: listOfAvailableDates()[1].slice(8, 10),
-    },
-    {
-      year: listOfAvailableDates()[2].slice(0, 4),
-      month: listOfAvailableDates()[2].slice(5, 7),
-      day: listOfAvailableDates()[2].slice(8, 10),
-    },
-    {
-      year: listOfAvailableDates()[3].slice(0, 4),
-      month: listOfAvailableDates()[3].slice(5, 7),
-      day: listOfAvailableDates()[3].slice(8, 10),
-    },
-    {
-      year: listOfAvailableDates()[4].slice(0, 4),
-      month: listOfAvailableDates()[4].slice(5, 7),
-      day: listOfAvailableDates()[4].slice(8, 10),
-    },
-    {
-      year: listOfAvailableDates()[5].slice(0, 4),
-      month: listOfAvailableDates()[5].slice(5, 7),
-      day: listOfAvailableDates()[5].slice(8, 10),
-    },
-    {
-      year: listOfAvailableDates()[6].slice(0, 4),
-      month: listOfAvailableDates()[6].slice(5, 7),
-      day: listOfAvailableDates()[6].slice(8, 10),
-    },
-  ];
+  const availableDatesOnCalendar = listOfAvailableDates();
 
   return (
     <>
@@ -83,7 +46,7 @@ function WeekDays({ today, year, month }) {
               year === today.getFullYear() &&
               month === today.getMonth();
             const isAvailable = availableDatesOnCalendar.some(
-              (date) => date.day == day && date.month == month + 1
+              (date) => date.day == day && date.month == month + 1 && date.year == year
             );
             return (
               <li

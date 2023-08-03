@@ -1,0 +1,28 @@
+.dashboard-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #743232;
+  color: white;
+  height: 50px;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+}
+
+.dashboard-sign-out {
+  font-size: 2rem;
+  margin: 0 1rem;
+}
+
+.dashboard-sign-out:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: #f7b6b6;
+}
+
+.dashboard-name {
+  margin: 0 1rem;
+}

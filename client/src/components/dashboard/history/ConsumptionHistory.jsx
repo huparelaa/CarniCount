@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { consumptionHistory } from "../../api/apiConsumption";
-import { dateConverter } from "../../services/date";
+import { consumptionHistory } from "../../../api/apiConsumption";
 
 function ConsumptionHistory() {
   const [history, setHistory] = useState([]);
@@ -22,7 +21,6 @@ function ConsumptionHistory() {
   if (isLoading) {
     return <p>Cargando tu historial de consumo</p>;
   }
-
   return (
     <div>
       <h1>Historial de consumo</h1>
